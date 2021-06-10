@@ -102,15 +102,4 @@ jobs:
           name: git-fuse-darwin-amd64
           path: git-fuse
         
-      - name: Build
-        run: go build
-        env:
-          GOOS: darwin
-          GOARCH: arm64
-      
-      - name: Create package
-        uses: actions/upload-artifact@v2
-        with:
-          name: git-fuse-darwin-arm64
-          path: git-fuse
       
