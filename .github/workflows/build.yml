@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build Linux
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,6 +19,26 @@ jobs:
 
       - name: Setup libfuse
         run: sudo apt-get install -y libfuse-dev
+        
+      - name: Build
+        run: go build
+        env:
+          GOOS: linux
+          GOARCH: amd64
+
+    name: Build Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.16'
+
+      - name: Setup libfuse
+        run: choco install winfsp --version=1.0.17072 -y
         
       - name: Build
         run: go build
@@ -44,28 +64,32 @@ jobs:
         with:
           name: git-fuse-windows-amd64-nocgo
           path: git-fuse.exe
-        
-      - name: Build
-        run: go build
-        env:
-          GOOS: linux
-          GOARCH: amd64
-      
-      - name: Create package
-        uses: actions/upload-artifact@v2
+
+    name: Build Mac
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
         with:
-          name: git-fuse-linux-amd64
-          path: git-fuse
-        
-      - name: Build
-        run: go build
-        env:
-          GOOS: darwin
-          GOARCH: amd64
+          go-version: '1.16'
+
+      - name: Setup libfuse
+        run: |
+          brew update
+          brew install caskroom/cask/osxfuse
       
       - name: Create package
         uses: actions/upload-artifact@v2
         with:
           name: git-fuse-darwin-amd64
+          path: git-fuse
+      
+      - name: Create package
+        uses: actions/upload-artifact@v2
+        with:
+          name: git-fuse-darwin-arm64
           path: git-fuse
       
