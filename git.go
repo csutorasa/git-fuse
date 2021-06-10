@@ -34,7 +34,7 @@ func listenCommits(basePath string, commitRef string, ch chan<- *object.Tree) er
 		return nil
 	}
 
-	return errors.New("Cannot handle commitref")
+	return errors.New(fmt.Sprintf("Unsupported commitlike %s", commitRef))
 }
 
 func handleBranch(repository *git.Repository, commitRef string, ch chan<- *object.Tree, gitPath string) error {
