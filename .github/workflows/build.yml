@@ -39,13 +39,14 @@ jobs:
           go-version: '1.16'
 
       - name: Setup libfuse
-        run: choco install winfsp --version=1.0.17072 -y
+        run: choco install winfsp -y --no-progress
         
       - name: Build
         run: go build
         env:
           GOOS: windows
           GOARCH: amd64
+          CPATH: C:\Program Files (x86)\WinFsp\inc\fuse
       
       - name: Create package
         uses: actions/upload-artifact@v2
@@ -81,7 +82,7 @@ jobs:
       - name: Setup libfuse
         run: |
           brew update
-          brew install caskroom/cask/osxfuse
+          brew install homebrew/cask/osxfuse
       
       - name: Create package
         uses: actions/upload-artifact@v2
