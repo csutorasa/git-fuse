@@ -1,7 +1,7 @@
 # git-fuse
 
 This is an command line application
-which parses a [git](https://git-scm.com/) repository and create a filesystem with its content.
+which parses a [git](https://git-scm.com/) repository and creates a readonly filesystem with its content.
 
 ## Filesystem
 
@@ -23,5 +23,5 @@ Example:
 ```
 
 ```bash
-.\git-fuse /home/user/test master /mnt/test
+./git-fuse /home/user/test master /mnt/test
 ```
