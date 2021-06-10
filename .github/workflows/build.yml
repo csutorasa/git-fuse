@@ -60,8 +60,8 @@ jobs:
       - name: Build
         run: go build
         env:
-          GOOS: linux
-          GOARCH: arm64
+          GOOS: darwin
+          GOARCH: amd64
       
       - name: Create package
         uses: actions/upload-artifact@v2
