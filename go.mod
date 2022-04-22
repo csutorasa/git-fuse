@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/billziss-gh/cgofuse v1.5.0
-	github.com/fsnotify/fsnotify v1.5.1
+	github.com/fsnotify/fsnotify v1.5.3
 	github.com/go-git/go-git/v5 v5.4.2
 )
 
