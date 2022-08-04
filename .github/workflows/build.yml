@@ -21,7 +21,7 @@ jobs:
         run: sudo apt-get install -y libfuse-dev
         
       - name: Build
-        run: go build
+        run: go build -ldflags "-s -w"
         env:
           GOOS: linux
           GOARCH: amd64
@@ -48,7 +48,7 @@ jobs:
         run: choco install winfsp -y --no-progress
         
       - name: Build
-        run: go build
+        run: go build -ldflags "-s -w"
         env:
           GOOS: windows
           GOARCH: amd64
@@ -61,7 +61,7 @@ jobs:
           path: git-fuse.exe
         
       - name: Build
-        run: go build
+        run: go build -ldflags "-s -w"
         env:
           GOOS: windows
           GOARCH: amd64
@@ -91,7 +91,7 @@ jobs:
           brew install homebrew/cask/osxfuse
         
       - name: Build
-        run: go build
+        run: go build -ldflags "-s -w"
         env:
           GOOS: darwin
           GOARCH: amd64
