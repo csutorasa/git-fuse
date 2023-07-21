@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/billziss-gh/cgofuse v1.5.0
 	github.com/fsnotify/fsnotify v1.6.0
-	github.com/go-git/go-git/v5 v5.7.0
+	github.com/go-git/go-git/v5 v5.8.0
 )
 
 require (
