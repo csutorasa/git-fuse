@@ -1,5 +1,8 @@
 name: Build
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - master
@@ -88,7 +91,7 @@ jobs:
       - name: Setup libfuse
         run: |
           brew update
-          brew install homebrew/cask/osxfuse
+          brew install macfuse
         
       - name: Build
         run: go build -ldflags "-s -w"
