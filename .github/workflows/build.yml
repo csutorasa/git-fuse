@@ -75,6 +75,32 @@ jobs:
         with:
           name: git-fuse-windows-amd64-nocgo
           path: git-fuse.exe
+        
+      - name: Build
+        run: go build -ldflags "-s -w"
+        env:
+          GOOS: windows
+          GOARCH: arm64
+          CPATH: C:\Program Files (x86)\WinFsp\inc\fuse
+      
+      - name: Create package
+        uses: actions/upload-artifact@v4
+        with:
+          name: git-fuse-windows-arm64
+          path: git-fuse.exe
+        
+      - name: Build
+        run: go build -ldflags "-s -w"
+        env:
+          GOOS: windows
+          GOARCH: arm64
+          CGO_ENABLED: 0
+      
+      - name: Create package
+        uses: actions/upload-artifact@v4
+        with:
+          name: git-fuse-windows-arm64-nocgo
+          path: git-fuse.exe
 
   build_mac:
     name: Build Mac
