@@ -1,6 +1,6 @@
 module github.com/csutorasa/git-fuse
 
-go 1.22
+go 1.23
 
 require (
 	github.com/billziss-gh/cgofuse v1.5.0

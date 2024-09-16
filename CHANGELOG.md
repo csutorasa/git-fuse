@@ -1,8 +1,8 @@
 # Changelog
 
-## Upcoming
+## Next
 
-Bump go version to 1.22.
+Bump go version to 1.23.
 
 ## 1.0.1
 
